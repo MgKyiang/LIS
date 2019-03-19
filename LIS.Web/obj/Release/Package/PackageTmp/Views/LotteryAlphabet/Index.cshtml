@@ -1,0 +1,67 @@
+﻿@model IEnumerable<LIS.Core.DataModel.LotteryAlphabet>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+@*Normal*@
+<link href="~/wwroot/plugins/datatables/dataTables.bootstrap.css" rel="stylesheet" />
+<link href="~/wwroot/plugins/datatables/jquery.dataTables.min.css" rel="stylesheet" />
+@*Jquery ui*@
+@*<link href="~/wwroot/plugins/datatables/dataTables.jqueryui.css" rel="stylesheet" />*@
+
+<script src="~/wwroot/plugins/jQuery/jquery-2.2.3.min.js"></script>
+@*Normal*@
+<script src="~/wwroot/plugins/datatables/jquery.dataTables.js"></script>
+@*Jquery ui*@
+@*<script src="~/wwroot/plugins/datatables/dataTables.jqueryui.min.js"></script>*@
+<script>
+    jQuery(function ($) {
+        $("#tbllotteryAlphabet").DataTable({
+            "paging": true,
+            "lengthChange": true,
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false
+        });
+    });
+</script>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-bordered table-hover dataTable" role="grid" id="tbllotteryAlphabet">
+    <thead>
+        <tr>
+            <th>Action</th>
+            <th>အက္ခရာစဉ်</th>
+            <th>အက္ခရာ</th>
+        </tr>
+        </thead>
+    <tbody>
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    <a href="@Url.Action("Edit", "LotteryAlphabet", new {   id=item.LotteryAlphabetID })" class="tooltip-success wow slideInDown" data-wow-duration="2s" data-rel="tooltip" title="Edit">
+                        <span class="green">
+                            <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
+                        </span>
+                    </a> |
+                    <a href="@Url.Action("Delete", "LotteryAlphabet", new {  id=item.LotteryAlphabetID })" class="tooltip-error wow slideInDown" data-wow-duration="2s" data-rel="tooltip" title="Delete">
+                        <span class="red">
+                            <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                        </span>
+                    </a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LotteryAlphabetNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Lotteryalphabet)
+                </td>
+            </tr>
+            }
+    </tbody>
+</table>
+
+
+

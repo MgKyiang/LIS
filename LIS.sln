@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LIS.Core", "LIS.Core\LIS.Core.csproj", "{AEFD1AEC-282D-4E65-8A02-C652062BDDC3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LIS.Repository", "LIS.Repository\LIS.Repository.csproj", "{329DD2E5-D94A-4E93-8FCC-E39C19DC4F73}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LIS.Services", "LIS.Services\LIS.Services.csproj", "{3C7744FC-C43C-4A87-8FA6-CC71F143111F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LIS.Web", "LIS.Web\LIS.Web.csproj", "{759CF82B-5A53-46C5-B501-C7D38582B108}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LIS.WebAPI", "LIS.WebAPI\LIS.WebAPI.csproj", "{71F00ED2-703A-472E-BFED-BA6A81CD8ECA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LIS.ViewModel", "LIS.ViewModel\LIS.ViewModel.csproj", "{91DC8BA2-5218-417E-8B08-507BE90538BB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AEFD1AEC-282D-4E65-8A02-C652062BDDC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEFD1AEC-282D-4E65-8A02-C652062BDDC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEFD1AEC-282D-4E65-8A02-C652062BDDC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEFD1AEC-282D-4E65-8A02-C652062BDDC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{329DD2E5-D94A-4E93-8FCC-E39C19DC4F73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{329DD2E5-D94A-4E93-8FCC-E39C19DC4F73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{329DD2E5-D94A-4E93-8FCC-E39C19DC4F73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{329DD2E5-D94A-4E93-8FCC-E39C19DC4F73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C7744FC-C43C-4A87-8FA6-CC71F143111F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C7744FC-C43C-4A87-8FA6-CC71F143111F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C7744FC-C43C-4A87-8FA6-CC71F143111F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C7744FC-C43C-4A87-8FA6-CC71F143111F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{759CF82B-5A53-46C5-B501-C7D38582B108}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{759CF82B-5A53-46C5-B501-C7D38582B108}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{759CF82B-5A53-46C5-B501-C7D38582B108}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{759CF82B-5A53-46C5-B501-C7D38582B108}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71F00ED2-703A-472E-BFED-BA6A81CD8ECA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71F00ED2-703A-472E-BFED-BA6A81CD8ECA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71F00ED2-703A-472E-BFED-BA6A81CD8ECA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71F00ED2-703A-472E-BFED-BA6A81CD8ECA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91DC8BA2-5218-417E-8B08-507BE90538BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91DC8BA2-5218-417E-8B08-507BE90538BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91DC8BA2-5218-417E-8B08-507BE90538BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91DC8BA2-5218-417E-8B08-507BE90538BB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

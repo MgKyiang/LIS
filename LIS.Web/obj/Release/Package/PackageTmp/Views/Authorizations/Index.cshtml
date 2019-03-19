@@ -1,0 +1,226 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<LIS.Core.DataModel.Authorizations>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+@*Normal*@
+<link href="~/wwroot/plugins/datatables/dataTables.bootstrap.css" rel="stylesheet" />
+<link href="~/wwroot/plugins/datatables/jquery.dataTables.min.css" rel="stylesheet" />
+@*Jquery ui*@
+@*<link href="~/wwroot/plugins/datatables/dataTables.jqueryui.css" rel="stylesheet" />*@
+
+<script src="~/wwroot/plugins/jQuery/jquery-2.2.3.min.js"></script>
+@*Normal*@
+<script src="~/wwroot/plugins/datatables/jquery.dataTables.js"></script>
+@*Jquery ui*@
+@*<script src="~/wwroot/plugins/datatables/dataTables.jqueryui.min.js"></script>*@
+<script>
+    jQuery(function ($) {
+        $("#tblauthorization").DataTable({
+            "paging": true,
+            "lengthChange": true,
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false
+        });
+    });
+</script>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<p>@Html.ActionLink("CreateManually", "Create") | @Html.ActionLink("CreateAutoProcess", "Add") </p>
+@using (Html.BeginForm("Index", "Authorizations", FormMethod.Post)) {
+    <table class="table table-bordered table-hover dataTable" role="grid" id="tblauthorization">
+        <thead>
+            <tr>
+                <th>Action</th>
+                <th>
+                    @Html.ActionLink("ControllerName", "index", new { sortby = ViewBag.ControllerSortby, searchby1 = Request.QueryString["searchby1"], search1 = Request.QueryString["search1"], searchby2 = Request.QueryString["searchby2"], search2 = Request.QueryString["search2"], searchby3 = Request.QueryString["searchby3"], search3 = Request.QueryString["search3"], searchby4 = Request.QueryString["searchby4"], search4 = Request.QueryString["search4"] })
+                </th>
+                <th>
+                    @Html.ActionLink("ActionName", "index", new { sortby = ViewBag.ActionSortby, searchby1 = Request.QueryString["searchby1"], search1 = Request.QueryString["search1"], searchby2 = Request.QueryString["searchby2"], search2 = Request.QueryString["search2"], searchby3 = Request.QueryString["searchby3"], search3 = Request.QueryString["search3"], searchby4 = Request.QueryString["searchby4"], search4 = Request.QueryString["search4"] })
+                </th>
+                <th>
+                    @Html.ActionLink("Role Name", "index", new { sortby = ViewBag.RoleSortby, searchby1 = Request.QueryString["searchby1"], search1 = Request.QueryString["search1"], searchby2 = Request.QueryString["searchby2"], search2 = Request.QueryString["search2"], searchby3 = Request.QueryString["searchby3"], search3 = Request.QueryString["search3"], searchby4 = Request.QueryString["searchby4"], search4 = Request.QueryString["search4"] })
+                </th>
+                <th>
+                    @Html.Label("Created UserName")
+                </th>
+                <th>
+                    <input type="checkbox" id="chkAllowHeader" /> @Html.DisplayNameFor(model => model.First().IsAllow)
+                </th>
+                <th>
+                    <input type="checkbox" id="chkLogHeader" /> @Html.DisplayNameFor(model => model.First().IsUseLog)
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @for (var i = 0; i < Model.Count; i++) {
+                <tr>
+                    <td>
+                        <a href="@Url.Action("Edit", "Authorizations", new {  id = Model[i].AuthorizationsID })" class="tooltip-success wow slideInDown" data-wow-duration="2s" data-rel="tooltip" title="Edit">
+                            <span class="green">
+                                <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
+                            </span>
+                        </a>
+                        |
+                        <a href="@Url.Action("Delete", "Authorizations", new { id = Model[i].AuthorizationsID})" class="tooltip-error wow slideInDown" data-wow-duration="2s" data-rel="tooltip" title="Delete">
+                            <span class="red">
+                                <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                            </span>
+                        </a>
+
+                    </td>
+                    <td>
+                        @Html.DisplayFor(x => x[i].ControllerName)
+                        @Html.HiddenFor(x => x[i].AuthorizationsID)
+                        @Html.HiddenFor(x => x[i].ControllerName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(x => x[i].ActionName)
+                        @Html.HiddenFor(x => x[i].ActionName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(x => x[i].ApplicationRole.Name)
+                        @Html.HiddenFor(x => x[i].ApplicationRole.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(x => x[i].CreatedUser.UserName)
+                        @Html.HiddenFor(x => x[i].CreatedUser.UserName)
+                    </td>
+                    <td>
+                        @Html.CheckBoxFor(x => x[i].IsAllow, new { @class = "chkAllow" })
+                        @Html.HiddenFor(x => x[i].IsAllow)
+                    </td>
+                    <td>
+                        @Html.CheckBoxFor(x => x[i].IsUseLog, new { @class = "chkLog" })
+                        @Html.HiddenFor(x => x[i].IsUseLog)
+                    </td>
+
+                </tr>
+                }
+        </tbody>
+    </table>
+        <input type="submit" id="btnSave" class="btn btn-success wow fadeIn" data-wow-duration="3s" value="Save" />
+    }
+@*Confirmation DialogBox*@
+<div id="confirm" class="modal fade" role="dialog" style="margin-left:30%;margin-right:30%;margin-top:5%;overflow:hidden;">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4>Confirmation</h4>
+        </div>
+        <div class="modal-body">
+            <h4>Are you sure want to save?</h4>
+        </div>
+        <div class="modal-footer">
+            <input type="submit" data-dismiss="modal" id="btnOk" class="btn btn-success" value="Confirm" />
+            <input type="submit" data-dismiss="modal" id="btnCancel" class="btn btn-danger" value="Cancel" />
+        </div>
+    </div>
+</div>
+@*End Confirmation DialogBox*@
+<script type="text/javascript">
+        $(document).ready()
+        {
+            //style for checkbox
+            $('input[type="checkbox"]').css('cursor', 'pointer');
+
+            //allow checkbox header click event
+            $('#chkAllowHeader').change(function () {
+                var checkstatus = this.checked;
+
+                $('.chkAllow').each(function () {
+
+                    this.checked = checkstatus;
+                });
+            });
+
+            //allowcheck click event
+            $('.chkAllow').on('change', function (e) {
+                $('#chkAllowHeader').prop('checked', false);
+            });
+
+            //UseLog header checkbox change event
+            $('#chkLogHeader').change(function () {
+                var checkstatus = this.checked;
+                $('.chkLog').each(function () {
+                    this.checked = checkstatus;
+                });
+            });
+
+            //UseLog checkbox change event
+            $('.chkLog').on('change', function () {
+                $('#chkLogHeader').prop('checked', false);
+            });
+
+            //Save Button Click Event => Show Confirmation Dialog
+            $('#btnSave').on('click', function (e) {
+                var $form = $(this).closest('form');
+                e.preventDefault();
+
+                $('#confirm').modal({
+                    backdrop: 'static',
+                    keyboard: false
+                }).one('click', '#btnOk', function (e) {
+                    $form.trigger('submit');
+                });
+            });
+            //End Save Button Click Event => Show Confirmation Dialog
+
+            $('select').val('');
+            $('input[type="text"]').val('');
+
+            //Searchby Dropdown Change Event
+            $('select').change(function () {
+
+                //currenc select value
+                var value = $(this).val();
+                //current select name
+                var search = $(this).attr('name');
+                //convert to search textbox name
+                search = search.replace('searchby', 'search');
+
+                if (value == '' || value == null || value == undefined) {
+                    $('input[name="' + search + '"]').val('');
+                }
+
+                if (value == 'CreatedDate') {
+                    $('input[name="' + search + '"]').attr('type', 'Date');
+                }
+                else {
+                    $('input[name="' + search + '"]').attr('type', 'text');
+                }
+
+            });
+
+            $('#filter').on('click', function () {
+
+                if ($('#filterspan').hasClass('glyphicon glyphicon-chevron-down')) {
+
+                    $('#filterspan').removeClass('glyphicon glyphicon-chevron-down');
+
+                    $('#filterspan').addClass('glyphicon glyphicon-chevron-up');
+
+                    $('#filtercollapse').css("display", "block");
+
+                }
+                else {
+
+                    $('#filterspan').removeClass('glyphicon glyphicon-chevron-up');
+
+                    $('#filterspan').addClass('glyphicon glyphicon-chevron-down');
+
+                    $('#filtercollapse').css("display", "none");
+
+                }
+            })
+        }
+</script>
+
+

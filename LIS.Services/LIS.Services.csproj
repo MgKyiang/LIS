@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3C7744FC-C43C-4A87-8FA6-CC71F143111F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LIS.Services</RootNamespace>
+    <AssemblyName>LIS.Services</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdminServices\APIAuthorizationServices.cs" />
+    <Compile Include="AdminServices\ApplicationSettingServices.cs" />
+    <Compile Include="AdminServices\Authorizationservices.cs" />
+    <Compile Include="AdminServices\ContactUsServices.cs" />
+    <Compile Include="AdminServices\ErrorLogServices.cs" />
+    <Compile Include="AdminServices\TransactionLogServices.cs" />
+    <Compile Include="CommonServices\BaseServices.cs" />
+    <Compile Include="CommonServices\IBaseServices.cs" />
+    <Compile Include="DomainServices\LotteryCheckingServices.cs" />
+    <Compile Include="DomainServices\LotterySaleServices.cs" />
+    <Compile Include="DomainServices\LotteryPrizeServices.cs" />
+    <Compile Include="DomainServices\CustomerServices.cs" />
+    <Compile Include="DomainServices\LotteryPrizeTypeServices.cs" />
+    <Compile Include="DomainServices\LotteryAlphabetServices.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\LIS.Core\LIS.Core.csproj">
+      <Project>{AEFD1AEC-282D-4E65-8A02-C652062BDDC3}</Project>
+      <Name>LIS.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LIS.Repository\LIS.Repository.csproj">
+      <Project>{329DD2E5-D94A-4E93-8FCC-E39C19DC4F73}</Project>
+      <Name>LIS.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LIS.ViewModel\LIS.ViewModel.csproj">
+      <Project>{91dc8ba2-5218-417e-8b08-507be90538bb}</Project>
+      <Name>LIS.ViewModel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

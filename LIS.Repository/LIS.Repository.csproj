@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{329DD2E5-D94A-4E93-8FCC-E39C19DC4F73}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LIS.Repository</RootNamespace>
+    <AssemblyName>LIS.Repository</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.2\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdminRepository\AdminContract\IAPIAuthorizationRepository.cs" />
+    <Compile Include="AdminRepository\AdminContract\IApplicationUsersRepository.cs" />
+    <Compile Include="AdminRepository\AdminContract\IAppSettingRepository.cs" />
+    <Compile Include="AdminRepository\AdminContract\IAuthorizationsRepository.cs" />
+    <Compile Include="AdminRepository\AdminContract\IContactUsRepository.cs" />
+    <Compile Include="AdminRepository\AdminContract\IErrorLogRepository.cs" />
+    <Compile Include="AdminRepository\AdminContract\ITransactionLogRepository.cs" />
+    <Compile Include="AdminRepository\AdminContract\IUserInRoleRepository.cs" />
+    <Compile Include="AdminRepository\AdminContract\IUsersMemberRepository.cs" />
+    <Compile Include="AdminRepository\APIAuthorizationRepository.cs" />
+    <Compile Include="AdminRepository\ApplicationSettingRepository.cs" />
+    <Compile Include="AdminRepository\AuthorizationsRepository.cs" />
+    <Compile Include="AdminRepository\ContactUsRepository.cs" />
+    <Compile Include="AdminRepository\ErrorLogRepository.cs" />
+    <Compile Include="AdminRepository\TransactionLogRepository.cs" />
+    <Compile Include="AdminRepository\UserInRoleRepository.cs" />
+    <Compile Include="AdminRepository\UsersMemberRepsitory.cs" />
+    <Compile Include="CommonRepository\CommonContract\IRepository.cs" />
+    <Compile Include="CommonRepository\Repository.cs" />
+    <Compile Include="DomainRepository\DomainContract\ILotteryCheckingRepository.cs" />
+    <Compile Include="DomainRepository\DomainContract\ILotterySaleRepository.cs" />
+    <Compile Include="DomainRepository\DomainContract\ILotteryPrizeRepository.cs" />
+    <Compile Include="DomainRepository\DomainContract\ICustomerRepository.cs" />
+    <Compile Include="DomainRepository\DomainContract\ILotteryPrizeTypeRepository.cs" />
+    <Compile Include="DomainRepository\DomainContract\ILotteryAlphabetRepository.cs" />
+    <Compile Include="DomainRepository\LotteryCheckingRepository.cs" />
+    <Compile Include="DomainRepository\LotterySalePrizeRepository.cs" />
+    <Compile Include="DomainRepository\LotteryPrizeRepository.cs" />
+    <Compile Include="DomainRepository\CustomerRepository.cs" />
+    <Compile Include="DomainRepository\LotteryPrizeTypeRepository.cs" />
+    <Compile Include="DomainRepository\LotteryAlphabetRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnitOfWorkContract\IUnitOfWork.cs" />
+    <Compile Include="UnitOfWorkImp\UnitOfWork.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\LIS.Core\LIS.Core.csproj">
+      <Project>{AEFD1AEC-282D-4E65-8A02-C652062BDDC3}</Project>
+      <Name>LIS.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

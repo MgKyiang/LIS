@@ -1,0 +1,84 @@
+﻿@model IEnumerable<LIS.Core.DataModel.LotterySale>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+@*Normal*@
+<link href="~/wwroot/plugins/datatables/dataTables.bootstrap.css" rel="stylesheet" />
+<link href="~/wwroot/plugins/datatables/jquery.dataTables.min.css" rel="stylesheet" />
+@*Jquery ui*@
+@*<link href="~/wwroot/plugins/datatables/dataTables.jqueryui.css" rel="stylesheet" />*@
+
+<script src="~/wwroot/plugins/jQuery/jquery-2.2.3.min.js"></script>
+@*Normal*@
+<script src="~/wwroot/plugins/datatables/jquery.dataTables.js"></script>
+@*Jquery ui*@
+@*<script src="~/wwroot/plugins/datatables/dataTables.jqueryui.min.js"></script>*@
+<script>
+    jQuery(function ($) {
+        $("#tblLotterySale").DataTable({
+            "paging": true,
+            "lengthChange": true,
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false
+        });
+    });
+</script>
+<p>
+   <span class="checkbox">@Html.ActionLink("Create New", "Create")</span> 
+</p>
+<table class="table table-bordered table-hover dataTable" role="grid" id="tblLotterySale">
+    <thead>
+        <tr>
+            <th>Action</th>
+            <th>၀ယ်ယူသူအမည်</th>
+            <th>ရက်စွဲ</th>
+
+            <th>အက္ခရာ</th>
+            <th>ထီဂဏန်း</th>
+            <th>အကြိမ်ရေ</th>
+            <th>စျေးနှုန်း</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    <a href="@Url.Action("Edit", "LotterySale", new {   id=item.LotterySaleID })" class="tooltip-success wow slideInDown" data-wow-duration="2s" data-rel="tooltip" title="Edit">
+                        <span class="green">
+                            <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
+                        </span>
+                    </a> |
+                    <a href="@Url.Action("Delete", "LotterySale", new {  id=item.LotterySaleID })" class="tooltip-error wow slideInDown" data-wow-duration="2s" data-rel="tooltip" title="Delete">
+                        <span class="red">
+                            <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                        </span>
+                    </a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Customers.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SaleDate)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.LotteryAlphabets.Lotteryalphabet)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LotteryLuckyNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LotteryLuckyTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prize)
+                </td>
+                
+            </tr>
+            }
+    </tbody>
+</table>

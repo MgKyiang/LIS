@@ -1,0 +1,72 @@
+﻿@model IEnumerable<LIS.Core.DataModel.LotteryChecking>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+@*Normal*@
+<link href="~/wwroot/plugins/datatables/dataTables.bootstrap.css" rel="stylesheet" />
+<link href="~/wwroot/plugins/datatables/jquery.dataTables.min.css" rel="stylesheet" />
+@*Jquery ui*@
+@*<link href="~/wwroot/plugins/datatables/dataTables.jqueryui.css" rel="stylesheet" />*@
+
+<script src="~/wwroot/plugins/jQuery/jquery-2.2.3.min.js"></script>
+@*Normal*@
+<script src="~/wwroot/plugins/datatables/jquery.dataTables.js"></script>
+@*Jquery ui*@
+@*<script src="~/wwroot/plugins/datatables/dataTables.jqueryui.min.js"></script>*@
+<script>
+    jQuery(function ($) {
+        $("#tblChecking").DataTable({
+            "paging": true,
+            "lengthChange": true,
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false
+        });
+    });
+</script>
+<p>
+    @Html.ActionLink("Lottery Checking Process", "LotteryCheckingProcess")
+</p>
+<table class="table table-bordered table-hover dataTable" role="grid" id="tblChecking">
+    <thead>
+        <tr>
+            <th>အက္ခရာ</th>
+            <th>ဂဏန်း</th>
+            <th>အကြိမ်</th>         
+            <th>ဆု</th>
+            <th>အမည်</th>
+            <th>ဖုန်းနံပါတ်</th>
+            <th>ထီထွက်သည့်ရက်စွဲ</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LotteryPrizes.LotteryAlphabet.Lotteryalphabet)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LotteryPrizes.LotteryNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LotteryCheckingTime)
+                </td>
+                
+                <td>
+                    @Html.DisplayFor(modelItem => item.LotteryPrizes.LotteryPrizeType.LotteryPrizeTypeDescription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LotterySales.Customers.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LotterySales.Customers.PhoneNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LotteryCheckingDate)
+                </td>
+            </tr>
+            }
+    </tbody>
+</table>

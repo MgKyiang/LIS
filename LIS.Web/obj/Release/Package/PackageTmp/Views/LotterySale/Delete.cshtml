@@ -1,0 +1,61 @@
+﻿@model LIS.ViewModel.Domain.LotterySaleViewModel
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.LotterySaleID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LotterySaleID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CustomerID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SaleDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SaleDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LotteryAlphabetID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LotteryAlphabetID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LotteryLuckyNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LotteryLuckyNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LotteryLuckyTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LotteryLuckyTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Prize)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Prize)
+        </dd>
+    </dl>
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.LotterySaleID)
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

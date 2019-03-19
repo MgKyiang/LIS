@@ -1,0 +1,107 @@
+﻿@model LIS.ViewModel.Domain.LotterySaleViewModel
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryui")
+    @Styles.Render("~/Content/cssjqryUi")
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('input[type=datetime]').datepicker({
+                dateFormat: "mm/dd/yy"//,
+                //changeMonth: true,
+                //changeYear: true,
+                //yearRange: "-60:+0"
+            });
+        });
+        //style for checkbox
+        $('input[type="checkbox"]').css('cursor', 'pointer');
+
+        //allow checkbox lottery Alphabet click event
+        $('#chkLotteryAlphabet').change(function () {
+            if ($(this).is(':checked')) {
+                $("#LotteryAlphabetID2").show();
+            }
+            else {
+                $("#LotteryAlphabetID2").hide();
+            }
+        });
+    </script>
+}
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CustomerID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("CustomerID", null, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.Label("Default Customer?")
+                @Html.CheckBox("IsDefaultUser", false, new { htmlAttributes = new { @class = "checkbox" } })
+                @*@Html.ValidationMessageFor(model => model.CustomerID, "", new { @class = "text-danger" })*@
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SaleDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SaleDate, new { @class = "form-control", placeholder = "Enter Sale Date Here..." })
+                @*@Html.ValidationMessageFor(model => model.SaleDate, "", new { @class = "text-danger" })*@
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LotteryAlphabetID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("LotteryAlphabetID", null, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.ValidationMessageFor(model => model.LotteryAlphabetID, "", new { @class = "text-danger" })*@
+                <input type="checkbox" id="chkLotteryAlphabet" />
+                @Html.DropDownList("LotteryAlphabetID2", null, new { htmlAttributes = new { @class = "form-control" } })
+                <br />
+                @Html.CheckBox("IsForAll47Alphabet", false)
+                @Html.Label("အက္ခရာ အားလုံး (47) စောင်")
+
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LotteryLuckyNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.LotteryLuckyNumber, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.Label("အထိ")
+                @Html.TextBoxFor(model => model.LotteryLuckyNumber2, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.ValidationMessageFor(model => model.LotteryLuckyNumber, "", new { @class = "text-danger" })*@
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LotteryLuckyTime, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.LotteryLuckyTime, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.ValidationMessageFor(model => model.LotteryLuckyTime, "", new { @class = "text-danger" })*@
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Prize, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Prize, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.ValidationMessageFor(model => model.Prize, "", new { @class = "text-danger" })*@
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+    }
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+

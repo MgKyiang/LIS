@@ -1,0 +1,229 @@
+﻿<!DOCTYPE html>
+<html>
+@using Microsoft.AspNet.Identity
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Lottery Information System</title>
+    <link rel="stylesheet" href="~/wwroot/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/wwroot/dist/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/wwroot/dist/css/ionicons.min.css">
+    <link rel="stylesheet" href="~/wwroot/dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="~/wwroot/mine/css/myStyle.css">
+    <link rel="stylesheet" href="~/wwroot/dist/css/skins/skin-green.css">
+    <link rel="stylesheet" href="~/wwroot/plugins/datatables/dataTables.bootstrap.css">
+    <link rel="stylesheet" href="~/wwroot/plugins/select2/select2.min.css">
+    <link rel="stylesheet" href="~/wwroot/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css">
+    <link rel="stylesheet" href="~/wwroot/plugins/datatables/extensions/Responsive/css/dataTables.responsive.css">
+    @RenderSection("styles", required: false)
+</head>
+<!--
+BODY TAG OPTIONS:
+=================
+Apply one or more of the following classes to get the
+desired effect
+|---------------------------------------------------------|
+| SKINS   | skin-blue                               |
+|               | skin-black                              |
+|               | skin-purple                             |
+|               | skin-yellow                             |
+|               | skin-red                                |
+|               | skin-green                              |
+|---------------------------------------------------------|
+|LAYOUT OPTIONS | fixed                                   |
+|               | layout-boxed                            |
+|               | layout-top-nav                          |
+|               | sidebar-collapse                        |
+|               | sidebar-mini                            |
+|---------------------------------------------------------|
+-->
+<body class="hold-transition skin-green sidebar-mini">
+    <div class="wrapper">
+        <header class="main-header">
+            <!--ETSS Logo-->
+            <a href="#" class="logo">
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini"><b>LIS</b></span>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg"><b>LIS</b></span>
+            </a>
+            <!--Toggle navigation Bar-->
+            <nav class="navbar navbar-static-top" role="navigation">
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <!-- user Account: style can be found in dropdown.less -->
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="~/wwroot/dist/img/avatar5.png" class="user-image" alt="User Image">
+                                <span class="hidden-xs">@User.Identity.GetUserName()</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- user image -->
+                                <li class="user-header">
+                                    <img src="~/wwroot/dist/img/avatar5.png" class="img-circle" alt="user Image">
+                                    <p>
+                                        <span class="hidden-xs">@User.Identity.GetUserName()</span>
+                                        <span class="hidden-xs">@User.Identity.GetUserName()</span>
+                                    </p>
+                                </li>
+                                <li class="user-footer">
+                                    <div class="pull-left">
+                                        <a href="/User/UserProfile?id=@User.Identity.GetUserId()" class="btn btn-default btn-flat">Profile</a>
+                                    </div>
+                                    <div class="pull-right">
+                                        <a href="/User/Login" class="btn btn-default btn-flat">Sign out</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown user user-menu">
+                            <a href="/Home/Index"><i class="fa fa-home"></i> <span>Home</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <aside class="main-sidebar">
+            <section class="sidebar">
+                <ul class="sidebar-menu">
+                    @{
+                        if (Request.IsAuthenticated) {
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-ban"></i> <span>စနစ်ထိန်းချုပ်မှု</span>
+                                    <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="/Authorizations/Create"><i class="fa fa-list-alt"></i> <span>Entry</span></a></li>
+                                    <li><a href="/Authorizations/Index"><i class="fa fa-list-alt"></i> <span>List</span></a></li>
+                                </ul>
+                            </li>   <!--Auth-->
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-magnet"></i> <span>အက္ခရာ</span>
+                                    <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="/LotteryAlphabet/Create"><i class="fa fa-list-alt"></i> <span>Entry</span></a></li>
+                                    <li><a href="/LotteryAlphabet/Index"><i class="fa fa-list-alt"></i> <span>List</span></a></li>
+                                </ul>
+                            </li>   <!--LotteryAlphabet-->
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-dashboard"></i> <span>ထီဆုအမျိုးအစား</span>
+                                    <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="/LotteryPrizeType/Create"><i class="fa fa-list-alt"></i> <span>Entry</span></a></li>
+                                    <li><a href="/LotteryPrizeType/Index"><i class="fa fa-list-alt"></i> <span>List</span></a></li>
+                                </ul>
+                            </li>   <!--Lottery Prize Type-->
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-archive"></i> <span>ထီပေါက်စဉ်</span>
+                                    <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="/LotteryPrize/Create"><i class="fa fa-list-alt"></i> <span>Entry</span></a></li>
+                                    <li><a href="/LotteryPrize/Index"><i class="fa fa-list-alt"></i> <span>List</span></a></li>
+                                </ul>
+                            </li>   <!--Lottery Prize -->
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-users"></i> <span>၀ယ်သူအမည်စာရင်း</span>
+                                    <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="/Customer/Create"><i class="fa fa-list-alt"></i> <span>Entry</span></a></li>
+                                    <li><a href="/Customer/Index"><i class="fa fa-list-alt"></i> <span>List</span></a></li>
+                                </ul>
+                            </li>   <!--Customer-->
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-life-saver"></i> <span>ထီရောင်းရစာရင်း</span>
+                                    <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="/LotterySale/Create"><i class="fa fa-list-alt"></i> <span>Entry</span></a></li>
+                                    <li><a href="/LotterySale/Index"><i class="fa fa-list-alt"></i> <span>List</span></a></li>
+                                </ul>
+                            </li>   <!--Lottery Sale-->
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-caret-square-o-up"></i> <span>ထီတိုက်မယ်</span>
+                                    <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="/LotteryChecking/LotteryCheckingProcess"><i class="fa fa-list-alt"></i> <span>LotteryCheckingProcess</span></a></li>
+                                    <li><a href="/LotteryChecking/Index"><i class="fa fa-list-alt"></i> <span>List</span></a></li>
+                                </ul>
+                            </li>   <!--Lottery Checking-->
+                            }
+                        else {
+                            <li class="Active treeview">
+                                <a href="#">
+                                    <i class="fa fa-dashboard"></i> <span>Online Sale</span>
+                                    <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="/Admin/List"><i class="fa fa-list-alt"></i> <span>Booked List</span></a></li>
+                                    <li><a href="/Admin/Sold"><i class="fa fa-list-alt"></i> <span>Delivered List</span></a></li>
+                                </ul>
+                            </li>   <!--Online-->
+                            }
+                    }
+                </ul>
+            </section>
+        </aside>
+        <div class="content-wrapper">
+            <section class="content-header">
+                <h1>
+                    @ViewBag.Title
+                    <small>@ViewBag.SubTitle</small>
+                </h1>
+            </section>
+            <section class="content">
+                @{ Html.RenderPartial("_Alerts");}
+                @RenderBody()
+            </section>
+        </div>
+        <footer class="main-footer">
+            <div class="pull-right hidden-xs">
+                Anything you want
+            </div>
+            <strong>Copyright &copy; @DateTime.Now.Year <a href="#">LIS</a>.</strong> All rights reserved.
+        </footer>
+    </div>
+    <script src="~/wwroot/plugins/jQuery/jquery-2.2.3.min.js"></script>
+    <script src="~/wwroot/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/wwroot/plugins/jquery-validation/dist/additional-methods.min.js"></script>
+    <script src="~/wwroot/plugins/bootstrap-datetimepicker/js/moment.js"></script>
+    <script src="~/wwroot/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/wwroot/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/wwroot/plugins/datatables/dataTables.bootstrap.min.js"></script>
+    <script src="~/wwroot/plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/wwroot/plugins/select2/select2.full.min.js"></script>
+    <script src="~/wwroot/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+    <script src="~/wwroot/dist/js/app.min.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>
